@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Vibes&display=swap');
+
+:root {
+  --card-outline: 15px solid #FFF;
+  --round-corner: 50%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Vibes', "sans-serif";
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: ;
+  color: black;
+  font-weight: 300;
+  height: ;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Helvetica neue, roboto;
+}
+
+.screen {
+
+  width: 100%;
+  height: 100%;
+  background: #93de01;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+
+}
+
+.score-timer {
+
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.score-timer > h1 {
+  
+}
+
+.main-menu {
+  width: 50%;
+  height: 50%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-menu > button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  font-size: 20px;
+  ;
+}
+
+.board {
+  
+  display: ;
+  grid-gap: 5px;
+  display: grid;
+  /*background: red;*/
+  grid-template-columns: repeat(6, minmax(50px, 1fr));
+  display: none;
+  
+
+}
+
+.wrapper {
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+  /*background: gray;*/
+}
+
+.card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: yellow;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  
+}
+
+.front {
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+
+  background: rgba(32,124,229,1);
+  background: -moz-linear-gradient(left, rgba(32,124,229,1) 0%, rgba(32,124,229,1) 51%, rgba(73,155,234,1) 51%, rgba(73,155,234,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(32,124,229,1)), color-stop(51%, rgba(32,124,229,1)), color-stop(51%, rgba(73,155,234,1)), color-stop(100%, rgba(73,155,234,1)));
+  background: -webkit-linear-gradient(left, rgba(32,124,229,1) 0%, rgba(32,124,229,1) 51%, rgba(73,155,234,1) 51%, rgba(73,155,234,1) 100%);
+  background: -o-linear-gradient(left, rgba(32,124,229,1) 0%, rgba(32,124,229,1) 51%, rgba(73,155,234,1) 51%, rgba(73,155,234,1) 100%);
+  background: -ms-linear-gradient(left, rgba(32,124,229,1) 0%, rgba(32,124,229,1) 51%, rgba(73,155,234,1) 51%, rgba(73,155,234,1) 100%);
+  background: linear-gradient(to right, rgba(32,124,229,1) 0%, rgba(32,124,229,1) 51%, rgba(73,155,234,1) 51%, rgba(73,155,234,1) 100%);
+
+
+  border: var(--card-outline);
+  border-radius: 3px;
+
+}
+
+.back {
+  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: rgba(147,206,222,1);
+  transform: rotateY(180deg);
+  border: var(--card-outline);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
