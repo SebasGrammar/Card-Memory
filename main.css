@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Vibes&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
 :root {
   --card-outline: 15px solid #FFF;
   --round-corner: 50%;
@@ -9,7 +8,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Vibes', "sans-serif";
+  font-family: 'Amatic SC', cursive;
 }
 
 body, html {
@@ -34,21 +33,13 @@ body {
 
   width: 100%;
   height: 100%;
-  background: #93de01;
+  background: #96CEB4;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   
 
-}
-
-.score-timer {
-
-  width: 200px;
-  display: flex;
-  justify-content: space-between;
-  
 }
 
 .score-timer > h1 {
@@ -58,19 +49,22 @@ body {
 .main-menu {
   width: 50%;
   height: 50%;
-  background: black;
+  background: #FFEEAD;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 3px;
 }
 
-.main-menu > button {
-  width: 50px;
+.buttons > button {
+  background: #FFCC5C;
+  width: 100px;
   height: 50px;
   border-radius: 50px;
   border: none;
-  font-size: 20px;
-  ;
+  font-size: 40px;
+  
 }
 
 .board {
@@ -134,7 +128,7 @@ body {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background: rgba(147,206,222,1);
+  background: #96CEB4;
   transform: rotateY(180deg);
   border: var(--card-outline);
   border-radius: 3px;
@@ -142,4 +136,34 @@ body {
   justify-content: center;
   align-items: center;
   
+}
+
+/*
+.sc, .score {
+
+  background: red;
+  display: none;
+
+}
+*/
+
+.score-timer {
+
+  width: 200px;
+  display: none;
+  justify-content: space-between;
+  
+}
+
+.winner-screen {
+  width: 50%;
+  height: 50%;
+  background: #FFEEAD;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 2;
 }

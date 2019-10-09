@@ -8,12 +8,16 @@ let back = document.querySelector(".back")
 let buttons = document.querySelectorAll(".board-size")
 
 let score = document.querySelector(".score")
+let scoreTimer = document.querySelector(".score-timer")
 
 console.log(score)
 let mainMenu = document.querySelector(".main-menu")
 let timer = document.querySelector(".timer")
-// let frontProperties = getComputedStyle(front)
-// let backProperties = getComputedStyle(front)
+
+let screen = document.querySelector(".screen")
+
+let b = document.querySelector(".buttons")
+//let o = document.querySelector(".winner-screen")
 
 let pictures = [
   "https://img.icons8.com/dotty/80/000000/falcon.png", "https://img.icons8.com/dotty/80/000000/kiwi-bird.png",
@@ -31,6 +35,10 @@ function shuffle(array) {
   }
 }
 
+let end;
+let universalScore;
+let win;
+
 function time(minute) {
 
   let count = minute - 1
@@ -45,21 +53,32 @@ function time(minute) {
       timer.textContent = `${count}:0${seconds % 60}`
     }
     if (seconds % 60 === 0) {
-      console.log("No")
       count--;
     }
     console.log(count)
+    if (seconds === 0) {
+      end = "finish"
+      count = minute - 1
+      seconds = minute * 60
+
+    }
   }
 }
 
-let normal = time(10)
+// let normal = time(10)
 let hard = time(5)
 
-/*
-setInterval(function() {
-  twenty()
-}, 100)
-*/
+function goBack() {
+
+  mainMenu.style.display = "flex";
+  board.style.display = "none";
+  end = ""
+  win = ""
+  score.textContent = 0
+  scoreTimer.style.display = "none"
+
+}
+
 
 function wipeBoard() {
   while (board.firstChild) {
@@ -128,40 +147,41 @@ function game(num) {
         test[item]++
       }
     }
-    //console.log(test)
-    //console.log(used)
+
     shuffle(used)
 
     for (let p = 0; p <= used.length - 1; p++) {
       images[p].setAttribute("src", pictures[used[p]])
       cards[p].setAttribute("data-match", used[p])
-      //console.log(cards[p])
     }
 
   })();
 
   mainMenu.style.display = "none";
-  board.style.display = "grid"
+  board.style.display = "grid";
+  scoreTimer.style.display = "flex"
 
-  setInterval(function() {
+  let o = setInterval(function() {
     hard()
+    if (end || win) {
+      clearInterval(o)
+      goBack()
+
+    }
   }, 1000)
 
+  universalScore = event.target.textContent / 2 * 100
+  console.log(universalScore)
 
 }
 
 buttons.forEach(button => button.addEventListener("click", () => {
 
-  //boardSize(Number(button.textContent))
   console.log(button.textContent)
   game(Number(button.textContent))
   status = "deployed"
 
 }))
-
-
-//boardSize(8)
-
 
 let counter = 0;
 let test = "";
@@ -176,7 +196,7 @@ function flipCard() {
 
     if (this.dataset.match === test) {
 
-      // this.style.display = "none";
+
       let items = document.querySelectorAll(`[data-match="${test}"]`)
       items.forEach(item => item.style.visibility = "hidden")
       console.log(items)
@@ -187,7 +207,6 @@ function flipCard() {
     this.style.setProperty("transform", "rotateY(180deg)")
     this.style["pointer-events"] = "none"
     test = this.dataset.match
-    //console.log(this.dataset.match)
 
 
   }
@@ -201,30 +220,26 @@ function flipCard() {
   if (counter >= 2) {
     setTimeout(function() {
 
-
       cards.forEach(card => {
         card.style.setProperty("transform", "")
-        //card.style["pointer-events"] = "auto"
         card.style["pointer-events"] = "auto"
         test = "";
         counter = 0;
+
       })
 
     }, 1000)
-  }
-  /*
-  setTimeout(function() {
-    if (counter >= 2) {
-      
-      cards.forEach(card => {
-        card.style.setProperty("transform", "")
-        //card.style["pointer-events"] = "auto"
-        card.style["pointer-events"] = "auto"
-        test = "";
-        counter = 0;
-      })
+    if (Number(score.textContent) === universalScore) {
+      let winnerScreen = document.createElement("div")
+      let message = document.createElement("h1")
+      message.textContent = "You did it!!";
+      winnerScreen.className = "winner-screen";
+      winnerScreen.appendChild(message);
+      //buttons.forEach(button => winnerScreen.appendChild(button))
+      winnerScreen.appendChild(b);
+      screen.appendChild(winnerScreen);
+      console.log("You win!!")
+      win = "winner"
     }
-  }, 1000)
-  */
-
+  }
 }
